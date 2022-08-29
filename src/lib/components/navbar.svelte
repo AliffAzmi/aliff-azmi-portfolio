@@ -1,6 +1,11 @@
 <script>
+  import { navigating } from "$app/stores";
   import routes from "$lib/NavRoutes";
   let navOpen = false;
+
+  $: {
+    navOpen = $navigating ? true : false;
+  }
 </script>
 
 <nav class="navbar mb-2 flex justify-center items-center max-w-[900px] m-0">
