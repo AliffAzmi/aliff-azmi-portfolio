@@ -6,8 +6,6 @@ import {
   PUB_ID,
   PROP_ID
 } from '$env/static/private'
-import axios from 'axios'
-import adapter from 'axios/lib/adapters/http'
 
 export async function GET ({ params }) {
   let id = params.id || ''
@@ -18,7 +16,7 @@ export async function GET ({ params }) {
                 id
                 title
                 sid
-				image_feat
+				        image_feat
                 image_feat_single
                 summary
                 tags
@@ -51,15 +49,6 @@ export async function GET ({ params }) {
 
 const getFullContent = async id => {
   try {
-    // const fullContentData = await axios.post(`${NC_API_ENDPOINT}/s3`, {
-    //   key: `data/contents/${id}`,
-    //   bucket: 'api-data.newscraft.io',
-    //   method: 'GET',
-    //   adapter: adapter,
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
     const options = {
       key: `data/contents/${id}`,
       bucket: 'api-data.newscraft.io',
