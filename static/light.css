@@ -1,0 +1,9 @@
+/* light.css */
+:root {
+	--color-lightest: hsl(0deg, 0%, 100%);
+	--color-lighter: hsl(0deg, 0%, 80%);
+	--color-light: hsl(0deg, 0%, 60%);
+	--color-strong: hsl(0deg, 0%, 40%);
+	--color-stronger: hsl(0deg, 0%, 20%);
+	--color-strongest: hsl(0deg, 0%, 0%);
+}
