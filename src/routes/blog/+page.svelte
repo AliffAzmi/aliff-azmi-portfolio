@@ -8,5 +8,4 @@
 <Head url="/blog" title="Blog | Aliff Azmi" />
 
 <h1 class="font-bold text-center text-5xl">Blog</h1>
-
 <Articles isHome={false} {blogs} />

@@ -51,16 +51,29 @@ export async function GET ({ params }) {
 
 const getFullContent = async id => {
   try {
-    const fullContentData = await axios.post(`${NC_API_ENDPOINT}/s3`, {
+    // const fullContentData = await axios.post(`${NC_API_ENDPOINT}/s3`, {
+    //   key: `data/contents/${id}`,
+    //   bucket: 'api-data.newscraft.io',
+    //   method: 'GET',
+    //   adapter: adapter,
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    const options = {
       key: `data/contents/${id}`,
       bucket: 'api-data.newscraft.io',
-      method: 'GET',
-      adapter: adapter,
+      method: 'GET'
+    }
+    const response = await fetch(`${NC_API_ENDPOINT}/s3`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify(options)
     })
-    let full_content = fullContentData.data || ''
+    const full_content = await response.json()
+    console.log(full_content)
     return full_content
   } catch (error) {
     return error.message

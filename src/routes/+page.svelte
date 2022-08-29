@@ -4,7 +4,6 @@
   import Head from "$lib/components/head.svelte";
   import Welcome from "$lib/components/welcome.svelte";
   import Projects from "$lib/components/projects.svelte";
-  import PageTransition from "$lib/components/pageTransition.svelte";
 
   let projects = $$props?.data?.body?.projects || [];
   let blogs = $$props?.data?.body?.blogs || [];
@@ -12,12 +11,6 @@
 
 <Head url="/" title="Home | Aliff Azmi" />
 <Welcome />
-<PageTransition>
-  <Projects {projects} />
-</PageTransition>
-<PageTransition>
-  <Articles {blogs} />
-</PageTransition>
-<PageTransition>
-  <Contact />
-</PageTransition>
+<Projects {projects} />
+<Articles {blogs} />
+<Contact />
