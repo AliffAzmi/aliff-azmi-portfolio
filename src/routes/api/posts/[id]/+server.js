@@ -7,6 +7,7 @@ import {
   PROP_ID
 } from '$env/static/private'
 import axios from 'axios'
+import adapter from 'axios/lib/adapters/http'
 
 export async function GET ({ params }) {
   let id = params.id || ''
@@ -54,6 +55,7 @@ const getFullContent = async id => {
       key: `data/contents/${id}`,
       bucket: 'api-data.newscraft.io',
       method: 'GET',
+      adapter: adapter,
       headers: {
         'Content-Type': 'application/json'
       }

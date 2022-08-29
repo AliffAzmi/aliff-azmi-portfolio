@@ -21,8 +21,10 @@
 </script>
 
 <section>
-  <!-- transition:fly|local={{ y: 200, duration: 1000 }} -->
-  <div class="mx-auto max-w-screen-xl text-center">
+  <div
+    transition:fly|local={{ y: 400 }}
+    class="mx-auto max-w-screen-xl text-center"
+  >
     {#if isHome}
       <div class="flex items-center">
         <div class="flex-1">
