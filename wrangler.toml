@@ -1,0 +1,13 @@
+name = "aliff-azmi-portfolio"
+type = "webpack"
+main = "workers-site/index.js"
+account_id = 'c492620ba7ccc79e7e0422d30fdf8d35'
+zone_id    = '9064c98bb0ffccc05ecbc18d6db40fb9'
+usage_model = 'bundled'
+compatibility_flags = []
+
+workers_dev = true
+
+route="https://aliffazmi.com/"
+site = {bucket = "./build"}
+compatibility_date = "2022-08-29"
