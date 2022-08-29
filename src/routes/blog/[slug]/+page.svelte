@@ -90,7 +90,7 @@
     <span on:click={() => scrollTop()} class:hidden class="back_to_top">
       <Icon
         icon="ci:circle-chevron-up"
-        class={`fixed z-20 bottom-6 right-20 w-12 h-12 text-emerald-400 hover:text-emerald-600 cursor-pointer`}
+        class={`fixed z-20 bottom-6 right-4 w-12 h-12 text-emerald-400 hover:text-emerald-600 cursor-pointer`}
       />
     </span>
   </article>
