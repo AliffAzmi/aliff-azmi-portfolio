@@ -3,12 +3,25 @@
   import { page } from "$app/stores";
   import { id } from "$lib/stores";
   import Icon from "@iconify/svelte";
+  import { scrollTop } from "svelte-scrolling";
   import dayjs from "dayjs";
+  import customParseFormat from "dayjs/plugin/customParseFormat";
+  dayjs.extend(customParseFormat);
 
   export let { slug } = $page.params;
-
+  let hidden = true;
   let article = {};
   let content = "";
+  const scrollElement = () => {
+    return document.documentElement || document.body;
+  };
+  const handleOnScroll = () => {
+    if (scrollElement().scrollTop > 300) {
+      hidden = false;
+    } else {
+      hidden = true;
+    }
+  };
   onMount(async () => {
     const response = await fetch(`/api/posts/${$id}`, {
       method: "GET",
@@ -22,6 +35,7 @@
   });
 </script>
 
+<svelte:window on:scroll={handleOnScroll} />
 <div class="max-w-8xl mx-auto">
   <div class="flex pt-8 pb-10">
     <a
@@ -52,8 +66,8 @@
       <dl>
         <dt class="sr-only">Date</dt>
         <dd class="absolute top-0 inset-x-0 text-slate-700 dark:text-slate-400">
-          <time datetime={article.date_pubh}
-            >{dayjs(article.date_pubh).format("dddd, MMMM DD, YYYY")}</time
+          <time datetime={article.date_pub}
+            >{dayjs.unix(article.date_pub).format("dddd, MMMM DD, YYYY")}</time
           >
         </dd>
       </dl>
@@ -73,12 +87,22 @@
         {/each}
       </div>
     </div>
+    <span on:click={() => scrollTop()} class:hidden class="back_to_top">
+      <Icon
+        icon="ci:circle-chevron-up"
+        class={`fixed z-20 bottom-6 right-20 w-12 h-12 text-emerald-400 hover:text-emerald-600 cursor-pointer`}
+      />
+    </span>
   </article>
 {:else}
   Loading...
 {/if}
 
 <style global>
+  .back_to_top .hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
   .content a {
     @apply underline text-blue-500;
   }
