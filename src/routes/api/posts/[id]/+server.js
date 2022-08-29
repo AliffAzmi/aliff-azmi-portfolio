@@ -72,8 +72,7 @@ const getFullContent = async id => {
       },
       body: JSON.stringify(options)
     })
-    const full_content = await response.json()
-    console.log(full_content)
+    const full_content = (await response.text()) || ''
     return full_content
   } catch (error) {
     return error.message
