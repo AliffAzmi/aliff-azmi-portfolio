@@ -23,6 +23,7 @@
 </script>
 
 <section
+  class=" py-14"
   use:inview={{ unobserveOnEnter: true, rootMargin: "-5%" }}
   on:change={({ detail }) => {
     isInView = detail.inView;

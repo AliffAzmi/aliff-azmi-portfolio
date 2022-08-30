@@ -6,12 +6,14 @@
   import { scrollTop } from "svelte-scrolling";
   import dayjs from "dayjs";
   import customParseFormat from "dayjs/plugin/customParseFormat";
+  import SkeletonPost from "../../../lib/components/skeletonPost.svelte";
   dayjs.extend(customParseFormat);
 
-  export let { slug } = $page.params;
   let hidden = true;
   let article = {};
   let content = "";
+  let loading = true;
+  export let { slug } = $page.params;
   const scrollElement = () => {
     return document.documentElement || document.body;
   };
@@ -32,6 +34,7 @@
     const { story, full_content } = await response.json();
     article = story;
     content = full_content;
+    loading = false;
   });
 </script>
 
@@ -50,7 +53,10 @@
     >
   </div>
 </div>
-{#if article.title && content}
+
+{#if loading}
+  <SkeletonPost />
+{:else if article.title && content}
   <article class="relative pt-10">
     <div>
       {#if article.image_feat_single}
@@ -81,7 +87,7 @@
       {@html content}
     </div>
     <div class="flex">
-      <div class="lg:flex items-center ml-auto gap-2">
+      <div class="lg:flex flex items-center ml-auto gap-4">
         {#each article.tags as tag}
           <span class="tag">{`#${tag}`}</span>
         {/each}
@@ -95,7 +101,7 @@
     </span>
   </article>
 {:else}
-  Loading...
+  Article not found
 {/if}
 
 <style global>
