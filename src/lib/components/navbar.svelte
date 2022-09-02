@@ -1,5 +1,5 @@
 <script>
-  import { navigating } from "$app/stores";
+  import { page, navigating } from "$app/stores";
   import routes from "$lib/NavRoutes";
   let navOpen = false;
 
@@ -69,7 +69,10 @@
       </div>
       <ul class="flex flex-col items-center justify-between min-h-[250px]">
         {#each routes as route}
-          <li class="border-b border-gray-400 my-8 uppercase">
+          <li
+            class:active={$page.url.pathname.includes(route.href)}
+            class="my-8 uppercase"
+          >
             <a href={route.href}>{route.label}</a>
           </li>
         {/each}
@@ -81,6 +84,7 @@
     <div class="flex items-stretch">
       {#each routes as route}
         <a
+          class:active={$page.url.pathname.includes(route.href)}
           class="btn btn-ghost btn-sm rounded-btn p-0 m-3 hover:text-teal-500"
           href={route.href}
         >
@@ -103,11 +107,13 @@
     height: 100vh;
     top: 0;
     left: 0;
-    /* background: dark:; */
     z-index: 10;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+  }
+  .active {
+    @apply border-b-4 border-emerald-500;
   }
 </style>
