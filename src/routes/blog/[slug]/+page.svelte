@@ -5,8 +5,11 @@
   import Icon from "@iconify/svelte";
   import { scrollTop } from "svelte-scrolling";
   import dayjs from "dayjs";
+  import { paramCase } from "change-case";
   import customParseFormat from "dayjs/plugin/customParseFormat";
-  import SkeletonPost from "../../../lib/components/skeletonPost.svelte";
+
+  import SkeletonPost from "$lib/components/skeletonPost.svelte";
+  import Head from "$lib/components/head.svelte";
   dayjs.extend(customParseFormat);
 
   let hidden = true;
@@ -37,6 +40,8 @@
     loading = false;
   });
 </script>
+
+<Head url={`/blog/${slug}`} title={article.title || "Blog"} />
 
 <svelte:window on:scroll={handleOnScroll} />
 <div class="max-w-8xl mx-auto">
