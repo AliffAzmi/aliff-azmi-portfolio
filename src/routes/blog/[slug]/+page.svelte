@@ -5,7 +5,6 @@
   import Icon from "@iconify/svelte";
   import { scrollTop } from "svelte-scrolling";
   import dayjs from "dayjs";
-  import { paramCase } from "change-case";
   import customParseFormat from "dayjs/plugin/customParseFormat";
 
   import SkeletonPost from "$lib/components/skeletonPost.svelte";
