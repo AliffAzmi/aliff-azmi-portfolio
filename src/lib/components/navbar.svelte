@@ -1,15 +1,18 @@
 <script>
   import { page, navigating } from "$app/stores";
   import routes from "$lib/NavRoutes";
-  let navOpen = false;
+  import SocialIcons from "./socialIcons.svelte";
+  // let navOpen = false;
 
-  $: {
-    navOpen = $navigating ? true : false;
-  }
+  // $: {
+  //   navOpen = $navigating ? true : false;
+  // }
 </script>
 
-<nav class="navbar mb-2 flex justify-center items-center max-w-[900px] m-0">
-  <div class="flex-1 px-2 mx-2">
+<nav
+  class="navbar mb-2 flex lg:flex-row flex-col items-center max-w-[900px] m-0"
+>
+  <div class="flex px-2 mx-2">
     <a class="text-lg font-bold" href="/">
       <svg
         version="1.0"
@@ -42,7 +45,7 @@
     </a>
   </div>
 
-  <section class="flex p-5 lg:hidden">
+  <!-- <section class="flex p-5 lg:hidden">
     <div class="space-y-2" on:click={() => (navOpen = !navOpen)}>
       <span class="block h-0.5 w-8 animate-pulse bg-gray-600" />
       <span class="block h-0.5 w-8 animate-pulse bg-gray-600" />
@@ -78,9 +81,9 @@
         {/each}
       </ul>
     </div>
-  </section>
+  </section> -->
 
-  <div class="flex-none hidden px-2 mx-2 lg:flex">
+  <div class="flex-1 px-2 mx-2 lg:flex">
     <div class="flex items-stretch">
       {#each routes as route}
         <a
@@ -93,10 +96,14 @@
       {/each}
     </div>
   </div>
+
+  <div class="px-2 mx-2 hidden lg:flex">
+    <SocialIcons />
+  </div>
 </nav>
 
 <style>
-  .menuNavClose {
+  /* .menuNavClose {
     display: none;
   }
   .navOpen {
@@ -112,7 +119,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-  }
+  } */
   .active {
     @apply border-b-4 border-emerald-500;
   }
