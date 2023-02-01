@@ -4,22 +4,11 @@
   import { pid } from "$lib/stores";
   import { inview } from "svelte-inview";
   import Button from "./button.svelte";
+  import { slugify } from "$lib/utils";
 
   export let isHome = true;
   export let projects = [];
   let isInView;
-  // export let limit = 4;
-  // let projects = [];
-  // onMount(async () => {
-  // 	const response = await fetch(`/api/posts?limit=${limit}`, {
-  // 		method: 'GET',
-  // 		headers: {
-  // 			'Content-Type': 'application/json'
-  // 		}
-  // 	});
-  // 	const { data } = await response.json();
-  // 	projects = data?.stories;
-  // });
 </script>
 
 <section
@@ -62,11 +51,11 @@
                     href={`${
                       project.redirect
                         ? `${project.redirect}`
-                        : `/projects/${paramCase(project.title)}`
+                        : `/projects/${slugify(project.title, project.id)}`
                     }`}
                     target={`${project.redirect ? "_blank" : "_self"}`}
-                    on:click={pid.set(project.id)}
                   >
+                    <!-- on:click={pid.set(project.id)} -->
                     <span class="absolute inset-0" aria-hidden="true" />
                     {project.title}
                   </a>

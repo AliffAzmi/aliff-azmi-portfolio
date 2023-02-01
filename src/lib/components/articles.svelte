@@ -1,8 +1,9 @@
 <script>
   import { fly } from "svelte/transition";
   import { paramCase } from "change-case";
-  import { id } from "$lib/stores";
   import { inview } from "svelte-inview";
+  import { slugify } from "$lib/utils";
+  import { id } from "$lib/stores";
   import Button from "./button.svelte";
 
   export let blogs = [];
@@ -62,11 +63,10 @@
             <button
               class="justify-center items-center border-2 border-black dark:border-white dark:hover:bg-teal-500 hover:bg-teal-500 hover:text-white hover:border-white p-[10px] md:max-w-[200px]"
             >
-              <a
-                href={`/blog/${paramCase(article.title)}`}
-                on:click={(e) => id.set(article.id)}>Read articles =></a
-              ></button
-            >
+              <a href={`/blog/${slugify(article.title, article.id)}`}
+                >Read articles =></a
+              >
+            </button>
           </div>
         {/each}
         {#if blogs.length && isHome}

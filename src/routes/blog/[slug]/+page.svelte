@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { page } from "$app/stores";
-  import { id } from "$lib/stores";
+  // import { id } from "$lib/stores";
   import Icon from "@iconify/svelte";
   import { scrollTop } from "svelte-scrolling";
   import dayjs from "dayjs";
@@ -15,6 +15,7 @@
   let article = {};
   let content = "";
   let loading = true;
+  let id = $page.url.hash.replaceAll("#", "");
   export let { slug } = $page.params;
   const scrollElement = () => {
     return document.documentElement || document.body;
@@ -27,7 +28,7 @@
     }
   };
   onMount(async () => {
-    const response = await fetch(`/api/posts/${$id}`, {
+    const response = await fetch(`/api/posts/${atob(id)}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
