@@ -11,10 +11,10 @@
   import Loading from "$lib/components/loading.svelte";
   import Analytics from "$lib/components/analytics.svelte";
   import HeadDivider from "$lib/components/headDivider.svelte";
+  import BuyMeaCoffee from "../lib/components/buyMeaCoffee.svelte";
 
   NProgress.configure({
-    template:
-      '<div class="bar" style="background: #2dd4bf !important;" role="bar"></div>',
+    template: '<div class="bar" style="background: #2dd4bf !important;" role="bar"></div>',
     minimum: 0.2,
     showSpinner: false,
   });
@@ -31,19 +31,15 @@
 </script>
 
 <svelte:head>
-  <meta
-    name="color-scheme"
-    content={$theme === "system" ? "light dark" : $theme}
-  />
+  <meta name="color-scheme" content={$theme === "system" ? "light dark" : $theme} />
   <link rel="stylesheet" href={`/${$theme}.css`} />
 </svelte:head>
 
 <!-- <HeadDivider /> -->
-<div
-  class="w-[100vw] h-[100%] max-w-[900px] flex flex-col justify-between relative"
->
+<div class="w-[100vw] h-[100%] max-w-[900px] flex flex-col justify-between relative">
   <Navbar />
   <Analytics />
+  <BuyMeaCoffee />
   <main class="container max-w-3xl mx-auto px-4">
     {#if $loading}
       <div class="loader-wrapper">

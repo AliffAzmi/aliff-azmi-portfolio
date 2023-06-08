@@ -17,6 +17,7 @@
   let loading = true;
   let id = $page.url.hash.replaceAll("#", "");
   export let { slug } = $page.params;
+
   const scrollElement = () => {
     return document.documentElement || document.body;
   };
@@ -27,6 +28,7 @@
       hidden = true;
     }
   };
+
   onMount(async () => {
     const response = await fetch(`/api/posts/${atob(id)}`, {
       method: "GET",

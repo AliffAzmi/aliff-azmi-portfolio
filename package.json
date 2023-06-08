@@ -37,7 +37,9 @@
 		"change-case": "^4.1.2",
 		"dayjs": "^1.11.5",
 		"js-cookie": "^3.0.1",
+		"stripe": "^12.8.0",
 		"svelte-inview": "^3.0.1",
-		"svelte-scrolling": "^1.2.2"
+		"svelte-scrolling": "^1.2.2",
+		"svelte-stripe": "^0.0.22"
 	}
 }
