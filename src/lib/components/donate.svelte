@@ -79,28 +79,28 @@
   <div id="donate">
     <Elements {stripe} {clientSecret} theme="night" labels="floating" bind:elements>
       <form on:submit|preventDefault={submit}>
-        <div class="mb-4 text-center space-x-2 space-y-2 radio-group hover:text-black">
-          <label for="amount-5">
+        <div class="mb-4 text-center radio-group grid grid-rows-1 md:grid-cols-5 gap-2">
+          <label for="amount-5" class="hover:text-black">
             <input type="radio" name="amount" id="amount-5" value="500" bind:group={selectedAmount} />
             RM5
           </label>
 
-          <label for="amount-10">
+          <label for="amount-10" class="hover:text-black">
             <input type="radio" name="amount" id="amount-10" value="1000" bind:group={selectedAmount} />
             RM10
           </label>
 
-          <label for="amount-15">
+          <label for="amount-15" class="hover:text-black">
             <input type="radio" name="amount" id="amount-15" value="1500" bind:group={selectedAmount} />
             RM15
           </label>
 
-          <label for="amount-30">
+          <label for="amount-30" class="hover:text-black">
             <input type="radio" name="amount" id="amount-30" value="3000" bind:group={selectedAmount} />
             RM30
           </label>
 
-          <label for="amount-50">
+          <label for="amount-50" class="hover:text-black">
             <input type="radio" name="amount" id="amount-50" value="5000" bind:group={selectedAmount} />
             RM50
           </label>
