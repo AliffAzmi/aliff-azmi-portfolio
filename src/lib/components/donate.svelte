@@ -4,7 +4,7 @@
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
 
-  import { PUBLIC_STRIPE_KEY } from "$env/static/public";
+  import { PUBLIC_STRIPE_KEY, PUBLIC_CONNECTED_ACCOUNT_ID } from "$env/static/public";
 
   let stripe = null;
   let clientSecret = null;
@@ -15,7 +15,9 @@
   let pid = null;
 
   onMount(async () => {
-    stripe = await loadStripe(PUBLIC_STRIPE_KEY);
+    stripe = await loadStripe(PUBLIC_STRIPE_KEY
+    // , { stripeAccount: PUBLIC_CONNECTED_ACCOUNT_ID }
+    );
     clientSecret = await createPaymentIntent();
   });
 
