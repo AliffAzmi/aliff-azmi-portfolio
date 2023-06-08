@@ -11,13 +11,8 @@ export async function POST ({ request }) {
     {
       amount,
       currency: 'myr',
-      // payment_method_types: ['card', 'fpx', 'grabpay']
-      // automatic_payment_methods: { enabled: true }
-      // confirm: true,
-      // return_url: 'http://localhost/return'
-      automatic_payment_methods: {
-        enabled: true
-      }
+      // payment_method_types: ['card', 'grabpay', 'fpx'],
+      automatic_payment_methods: { enabled: true }
     },
     {
       stripeAccount: 'acct_1NGbrRIQNgY4CexP'

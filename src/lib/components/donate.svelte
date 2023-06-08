@@ -1,6 +1,6 @@
 <script module="context">
   import { loadStripe } from "@stripe/stripe-js";
-  import { Elements, PaymentElement, PaymentRequestButton } from "svelte-stripe";
+  import { Elements, LinkAuthenticationElement, PaymentElement, PaymentRequestButton } from "svelte-stripe";
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
 
@@ -106,6 +106,7 @@
           </label>
         </div>
 
+        <!-- <LinkAuthenticationElement /> -->
         <PaymentElement />
 
         <button class=" bg-blue-500 mt-2 p-3 w-full" disabled={processing}>

@@ -11,11 +11,9 @@ export async function POST ({ request }) {
     paymentID,
     {
       amount,
-      currency: 'myr',
+      currency: 'myr'
       // payment_method_types: ['card', 'fpx', 'grabpay']
-      automatic_payment_methods: {
-        enabled: true
-      }
+      // automatic_payment_methods: { enabled: true }
     },
     {
       stripeAccount: 'acct_1NGbrRIQNgY4CexP'
