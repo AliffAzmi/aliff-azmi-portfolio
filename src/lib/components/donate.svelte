@@ -15,9 +15,7 @@
   let pid = null;
 
   onMount(async () => {
-    stripe = await loadStripe(PUBLIC_STRIPE_KEY
-    // , { stripeAccount: PUBLIC_CONNECTED_ACCOUNT_ID }
-    );
+    stripe = await loadStripe(PUBLIC_STRIPE_KEY, { stripeAccount: PUBLIC_CONNECTED_ACCOUNT_ID });
     clientSecret = await createPaymentIntent();
   });
 
@@ -44,7 +42,7 @@
         amount: selectedAmount,
       }),
     });
-    const { clientSecret, paymentMethodId } = await response.json();
+    const { paymentMethodId, clientSecret } = await response.json();
     pid = paymentMethodId;
     return clientSecret;
   }
