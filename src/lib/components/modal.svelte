@@ -29,7 +29,7 @@
       </div>
       <div class="content p-8">
         <!-- <slot name="body" /> -->
-		<Donate />
+        <Donate />
       </div>
     </div>
   </div>

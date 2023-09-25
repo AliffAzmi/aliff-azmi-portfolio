@@ -8,7 +8,8 @@ import {
 
 export async function load ({ url, params }) {
   try {
-    const projects = await getSeries('projects')
+    // const projects = await getSeries('projects')
+    const projects = []
     const blogs = await getSeries('blog')
     return {
       status: 200,
