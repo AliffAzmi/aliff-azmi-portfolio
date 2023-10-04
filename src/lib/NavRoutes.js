@@ -6,11 +6,33 @@ const routes = [
   {
     href: '/blog',
     label: 'Blog'
+  },
+  {
+    href: '#/tools',
+    label: 'Tools',
+    children: [
+      {
+        href: 'https://common-command.aliffazmi.com/',
+        label: 'Common Command',
+        target: '_blank'
+      },
+      {
+        href: 'https://ezgizer.aliffazmi.com/',
+        label: 'EzGizer',
+        target: '_blank'
+      },
+      {
+        href: 'https://ezcaldio.aliffazmi.com/calorie-calculator',
+        label: 'Calorie calculator',
+        target: '_blank'
+      },
+      {
+        href: 'https://ezcaldio.aliffazmi.com/idw-calculator',
+        label: 'Ideal Waist',
+        target: '_blank'
+      }
+    ]
   }
-  // {
-  // 	href: '/about',
-  // 	label: 'About'
-  // }
 ]
 
 export default routes

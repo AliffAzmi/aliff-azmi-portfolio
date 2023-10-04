@@ -2,16 +2,11 @@
   import { page, navigating } from "$app/stores";
   import routes from "$lib/NavRoutes";
   import SocialIcons from "./socialIcons.svelte";
-  // let navOpen = false;
 
-  // $: {
-  //   navOpen = $navigating ? true : false;
-  // }
+  let showChild = false;
 </script>
 
-<nav
-  class="navbar mb-2 flex lg:flex-row flex-col items-center max-w-[900px] m-0"
->
+<nav class="navbar mb-2 flex lg:flex-row flex-col items-center max-w-[900px] m-0">
   <div class="flex px-2 mx-2">
     <a class="text-lg font-bold" href="/">
       <svg
@@ -23,10 +18,7 @@
         preserveAspectRatio="xMidYMid meet"
         class="dark:fill-white fill-black hover:fill-teal-500"
       >
-        <g
-          transform="translate(0.000000,50.000000) scale(0.100000,-0.100000)"
-          stroke="none"
-        >
+        <g transform="translate(0.000000,50.000000) scale(0.100000,-0.100000)" stroke="none">
           <path
             d="M40 357 c0 -50 33 -132 65 -164 35 -35 70 -42 106 -22 16 8 25 7 40
 -7 25 -22 38 -10 15 15 -13 14 -14 24 -7 44 11 29 4 65 -18 91 -25 30 -112 66
@@ -86,12 +78,25 @@
   <div class="flex-1 px-2 mx-2 lg:flex">
     <div class="flex items-stretch">
       {#each routes as route}
+        <!-- svelte-ignore a11y-mouse-events-have-key-events -->
         <a
           class:active={$page.url.pathname.includes(route.href)}
           class="btn btn-ghost btn-sm rounded-btn p-0 m-3 hover:text-teal-500"
           href={route.href}
+          on:mouseover={() => (route.label === "Tools" ? (showChild = true) : "")}
+          on:mouseout={() => (showChild = false)}
         >
           {route.label}
+
+          {#if route.children}
+            <ul class={`mt-4 absolute w-full ${showChild ? "block" : "hidden"}`}>
+              {#each route.children as child (child.href)}
+                <li class=" hover:text-white">
+                  <a href={child.href} target={child.target}>{child.label}</a>
+                </li>
+              {/each}
+            </ul>
+          {/if}
         </a>
       {/each}
     </div>
@@ -122,5 +127,8 @@
   } */
   .active {
     @apply border-b-4 border-emerald-500;
+  }
+  .showChild {
+    @apply block;
   }
 </style>
