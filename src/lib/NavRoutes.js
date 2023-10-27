@@ -12,6 +12,11 @@ const routes = [
     label: 'Tools',
     children: [
       {
+        href: '#',
+        label: 'CV Builder - (Coming soon)',
+        target: ''
+      },
+      {
         href: 'https://common-command.aliffazmi.com/',
         label: 'Common Command',
         target: '_blank'
