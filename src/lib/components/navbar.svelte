@@ -89,7 +89,8 @@
           {route.label}
 
           {#if route.children}
-            <ul class={`mt-0 absolute p-2 bg-black ${showChild ? "block" : "hidden"}`}>
+          <!-- ${showChild ? "block" : "hidden"} -->
+            <ul class={`mt-0 text-center lg:text-left w-full absolute inset-x-0 lg:inset-auto p-2 lg:bg-transparent ${showChild ? "block" : "hidden"}`}>
               {#each route.children as child (child.href)}
                 <li class=" hover:text-white">
                   <a href={child.href} target={child.target}>{child.label}</a>
