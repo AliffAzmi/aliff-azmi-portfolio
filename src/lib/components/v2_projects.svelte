@@ -2,7 +2,7 @@
   import Icon from "@iconify/svelte";
 
   export let project = {};
-  let { title, cover, summary, time_completion, tags, redirect } = project.attributes;
+  let { title, cover, summary, time_completion, tags, redirect } = project;
 </script>
 
 <div class=" flex flex-col py-10">
@@ -14,7 +14,7 @@
   </div>
   <div class="flex flex-col  gap-2">
     <img
-      src={cover.data ? `https://cms.aliffazmi.com${cover.data.attributes.url}` : ""}
+      src={cover ? `https://cms.aliffazmi.com${cover.url}` : ""}
       alt="project showcase"
       class=" object-cover aspect-auto h-48 w-full"
     />
@@ -25,10 +25,10 @@
     <div>
       <p class=" font-normal text-sm">
         Technologies:
-        {#if tags.data}
-          {#each tags.data as tag (tag.id)}
+        {#if tags}
+          {#each tags as tag (tag.id)}
             <span class="first:pl-0 text-sm text-teal-500 hover:text-teal-300">
-              {tag.attributes.name}
+              {tag.name}
             </span>
           {/each}
         {/if}
