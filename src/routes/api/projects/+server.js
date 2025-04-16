@@ -5,7 +5,7 @@ export async function GET ({ params, url }) {
 
   const fields =
     'fields=title,summary,publishedAt,slug,redirect,time_completion'
-  const populate = 'populate=cover,tags'
+  const populate = 'populate=cover&populate=tags'
   const filter = 'filters[$and][0][category][name][$eq]=Project'
   const sort = 'sort=publishedAt:desc'
 
