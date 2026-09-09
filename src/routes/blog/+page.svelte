@@ -15,7 +15,7 @@
 
 <style>
   .writing-page {
-    @apply mx-auto max-w-3xl py-20 sm:py-28;
+    @apply mx-0 max-w-3xl py-20 sm:py-28;
   }
   .eyebrow {
     @apply mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-teal-600 dark:text-teal-400;
