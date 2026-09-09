@@ -36,11 +36,11 @@
 </svelte:head>
 
 <!-- <HeadDivider /> -->
-<div class="w-[100vw] h-[100%] max-w-[900px] flex flex-col justify-between relative">
+<div class="site-shell">
   <Navbar />
   <Analytics />
   <BuyMeaCoffee />
-  <main class="container max-w-3xl mx-auto px-4">
+  <main class="site-main">
     {#if $loading}
       <div class="loader-wrapper">
         <Loading />
@@ -53,6 +53,8 @@
 </div>
 
 <style>
+  .site-shell { @apply mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-between; }
+  .site-main { @apply mx-auto w-full max-w-5xl px-5 sm:px-8; }
   .loader-wrapper {
     @apply fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-100 flex flex-col items-center justify-center;
   }

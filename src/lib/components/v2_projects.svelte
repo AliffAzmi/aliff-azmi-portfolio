@@ -1,38 +1,36 @@
 <script>
-  import Icon from "@iconify/svelte";
+  import { slugify } from "$lib/utils";
 
   export let project = {};
-  let { title, cover, summary, time_completion, tags, redirect } = project;
+  $: ({ title, cover, summary, time_completion, tags = [], redirect, id } = project);
+  $: destination = redirect || `/projects/${slugify(title || "project", id)}`;
 </script>
 
-<div class=" flex flex-col py-10">
-  <div class=" flex justify-between items-center">
-    <div class=" font-bold text-lg">{title}</div>
-    {#if redirect}
-      <div><a href={redirect} target="_blank"><Icon icon="octicon:logo-github-16" /></a></div>
-    {/if}
-  </div>
-  <div class="flex flex-col  gap-2">
-    <img
-      src={cover ? `https://cms.aliffazmi.com${cover.url}` : ""}
-      alt="project showcase"
-      class=" object-cover aspect-auto h-48 w-full"
-    />
-    <div>{summary}</div>
-  </div>
-  <div class="py-2 flex flex-col gap-4">
-    <div><p class=" font-normal text-sm">Time Completion: {time_completion || ""}</p></div>
-    <div>
-      <p class=" font-normal text-sm">
-        Technologies:
-        {#if tags}
-          {#each tags as tag (tag.id)}
-            <span class="first:pl-0 text-sm text-teal-500 hover:text-teal-300">
-              {tag.name}
-            </span>
-          {/each}
-        {/if}
-      </p>
+<article class="project-card">
+  <a class="project-main" href={destination} target={redirect ? "_blank" : "_self"} rel={redirect ? "noreferrer" : undefined}>
+    <div class="project-copy">
+      <div class="project-title-row"><h3>{title}</h3><span aria-hidden="true">↗</span></div>
+      <div class="summary">{@html summary}</div>
+      {#if tags.length}
+        <ul class="tags">{#each tags as tag (tag.id)}<li>{tag.name}</li>{/each}</ul>
+      {/if}
     </div>
-  </div>
-</div>
+    {#if cover}
+      <img src={`https://cms.aliffazmi.com${cover.url}`} alt={`Preview of ${title}`} />
+    {/if}
+  </a>
+</article>
+
+<style>
+  .project-card { @apply py-7; }
+  .project-main { @apply grid gap-6 md:grid-cols-[1fr_13rem] md:items-center; }
+  .project-title-row { @apply flex items-start justify-between gap-4; }
+  h3 { @apply text-xl; }
+  .project-title-row span { @apply text-xl text-teal-600 transition-transform; }
+  .summary { @apply mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300; }
+  .tags { @apply mt-5 flex flex-wrap gap-2; }
+  .tags li { @apply rounded-full bg-teal-50 px-3 py-1 text-xs font-medium text-teal-800 dark:bg-teal-900 dark:text-teal-300; }
+  img { @apply h-32 w-full rounded-md border border-slate-200 object-cover dark:border-slate-800; }
+  .project-main:hover h3 { @apply text-teal-700 dark:text-teal-400; }
+  .project-main:hover .project-title-row span { @apply translate-x-1 -translate-y-1; }
+</style>
