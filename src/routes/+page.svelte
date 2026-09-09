@@ -25,8 +25,8 @@
   <h1>Building useful, thoughtful web experiences.</h1>
   <p class="hero-copy">I’m Aliff Azmi, a full-stack developer who enjoys turning practical ideas into dependable products.</p>
   <div class="hero-actions">
-    <a class="primary-action" href="/projects">View selected work</a>
-    <a class="secondary-action" href="mailto:aliff.azmi98@gmail.com">Get in touch</a>
+    <a class="cta-primary" href="/projects">View selected work</a>
+    <a class="cta-secondary" href="mailto:aliff.azmi98@gmail.com">Get in touch</a>
   </div>
 </section>
 
@@ -55,8 +55,6 @@
   .hero h1 { @apply max-w-3xl text-4xl font-semibold leading-[1.05] sm:text-6xl; }
   .hero-copy { @apply mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300; }
   .hero-actions { @apply mt-9 flex flex-wrap gap-3; }
-  .primary-action { @apply rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-700; }
-  .secondary-action { @apply rounded-md border border-slate-300 px-5 py-3 text-sm font-semibold hover:border-slate-900 dark:border-slate-700 dark:hover:border-white; }
   .projects-section { @apply border-t border-slate-200 py-16 dark:border-slate-800; }
   .section-heading { @apply mb-7 flex items-end justify-between gap-6; }
   .section-heading h2 { @apply text-3xl; }

@@ -49,7 +49,7 @@
 <div class="max-w-8xl mx-auto">
   <div class="flex pt-8 pb-10">
     <a
-      class="group flex font-semibold text-sm leading-6 text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white"
+      class="cta-secondary group"
       href="/blog"
     >
       <Icon

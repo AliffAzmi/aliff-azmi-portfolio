@@ -16,3 +16,12 @@
     @apply font-semibold tracking-tight;
   }
 }
+
+@layer components {
+  .cta-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-700;
+  }
+  .cta-secondary {
+    @apply inline-flex items-center justify-center rounded-md border border-slate-300 px-5 py-3 text-sm font-semibold hover:border-slate-900 dark:border-slate-700 dark:hover:border-white;
+  }
+}
