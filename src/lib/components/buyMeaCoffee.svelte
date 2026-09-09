@@ -5,7 +5,7 @@
   let showModal = false;
 </script>
 
-<div class=" z-50 fixed bottom-5 left-5">
+<div class="z-50 fixed bottom-5 right-5">
   <!-- svelte-ignore a11y-invalid-attribute -->
   <a href="#" on:click={() => (showModal = true)}>
     <div class=" rounded border">
