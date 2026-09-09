@@ -1,4 +1,5 @@
 <script>
+  import { cubicOut } from "svelte/easing";
   import { fly } from "svelte/transition";
   import { inview } from "svelte-inview";
   import { slugify } from "$lib/utils";
@@ -29,14 +30,19 @@
 >
   {#if isInView}
     <div
-      transition:fly|local={{ x: 400, duration: 2000 }}
+      transition:fly|local={{
+        y: 18,
+        duration: 500,
+        opacity: 0,
+        easing: cubicOut,
+      }}
       class="mx-auto max-w-screen-xl"
     >
       {#if isHome}
         <div class="flex items-center">
           <div class="flex-1">
             <h1
-              class="text-xl md:text-4xl font-semibold text-center lg:text-left"
+              class="text-xl font-semibold text-center text-teal-600 md:text-4xl lg:text-left dark:text-teal-400"
             >
               Latest Articles
             </h1>
@@ -58,7 +64,11 @@
             </div>
             <p class="articles-summary">{@html article.summary}</p>
             <!-- <Button link={`/blog/${paramCase(article.title)}`} label={'Read articles =>'} onclick={id} /> -->
-            <a class="cta-primary" href={`/blog/${slugify(article.title, article.id)}`}>Read article <span aria-hidden="true">→</span></a>
+            <a
+              class="cta-primary"
+              href={`/blog/${slugify(article.title, article.id)}`}
+              >Read article <span aria-hidden="true">→</span></a
+            >
           </div>
         {/each}
         {#if blogs.length && isHome}
