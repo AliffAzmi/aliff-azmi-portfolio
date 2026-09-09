@@ -39,37 +39,34 @@
       class="mx-auto max-w-screen-xl"
     >
       {#if isHome}
-        <div class="flex items-center">
-          <div class="flex-1">
-            <h1
-              class="text-xl font-semibold text-center text-teal-600 md:text-4xl lg:text-left dark:text-teal-400"
-            >
-              Latest Articles
-            </h1>
-          </div>
-        </div>
+        <h2 class="eyebrow">Latest Articles</h2>
       {/if}
       <div class="article-container">
         {#each blogs as article}
-          <div class="articles-box">
+          <article class="articles-box">
             <div class="articles-header">
-              <h2 class="articles-title">{article.title}</h2>
+              <svelte:element
+                this={isHome ? "h3" : "h2"}
+                class="articles-title"
+              >
+                {article.title}
+              </svelte:element>
               <div class="articles-tag">
                 {#each article.tags as tag}
-                  <div class="text-sm text-teal-500 hover:text-teal-300">
+                  <span>
                     {tag}
-                  </div>
+                  </span>
                 {/each}
               </div>
             </div>
-            <p class="articles-summary">{@html article.summary}</p>
+            <div class="articles-summary">{@html article.summary}</div>
             <!-- <Button link={`/blog/${paramCase(article.title)}`} label={'Read articles =>'} onclick={id} /> -->
             <a
               class="cta-primary"
               href={`/blog/${slugify(article.title, article.id)}`}
               >Read article <span aria-hidden="true">→</span></a
             >
-          </div>
+          </article>
         {/each}
         {#if blogs.length && isHome}
           <div class=" flex flex-col items-center">
@@ -82,19 +79,26 @@
 </section>
 
 <style>
+  .eyebrow {
+    @apply mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-teal-600 dark:text-teal-400;
+  }
   .article-container {
-    @apply grid grid-cols-1 py-10 gap-10;
+    @apply grid grid-cols-1 gap-6 py-7;
   }
   .articles-box {
-    @apply dark:bg-black/[0.1] dark:border-white border dark:shadow-md dark:hover:shadow-white hover:shadow-black border-black text-start box-border flex flex-col p-8 w-[100%] transition-transform rounded-3xl;
+    @apply flex min-w-0 flex-col items-start rounded-lg border border-slate-200 bg-white p-6 text-left sm:p-8 dark:border-slate-800 dark:bg-slate-900/30;
+    overflow-wrap: anywhere;
   }
   .articles-title {
-    @apply flex m-0;
+    @apply m-0 text-xl leading-snug;
   }
   .articles-tag {
-    @apply flex flex-wrap gap-2;
+    @apply mt-4 flex flex-wrap gap-2;
+  }
+  .articles-tag span {
+    @apply rounded-full bg-teal-50 px-3 py-1 text-xs font-medium text-teal-800 dark:bg-teal-900 dark:text-teal-300;
   }
   .articles-summary {
-    @apply block font-thin text-gray-500 py-6;
+    @apply max-w-2xl py-6 text-sm leading-6 text-slate-600 dark:text-slate-300;
   }
 </style>
