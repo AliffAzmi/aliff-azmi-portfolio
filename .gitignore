@@ -27,6 +27,8 @@ _archive
 
 # Environment files
 .dot
+# Local Codex configuration
+.codex/
 # Editor and other files
 .idea
 typing
